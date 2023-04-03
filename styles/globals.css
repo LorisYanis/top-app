@@ -3,18 +3,20 @@ body {
     margin: 0;
     padding: 0;
     color: var(--black);
-    background: var(--bg-white);
+    background: var(--bg-gray);
 
     font-family: "Noto Sans", sans-serif;
 }
 
 :root {
     --black: #3b434e;
+    --gray-light: #ebebeb;
     --white: #fff;
     --primary: #7653fc;
+    --primary-hover: #6344df;
     --red: #fc836d;
     --green: #1dc37e;
     --green-light: #c8f8e4;
-    --bg-white: #f5f6f8;
+    --bg-gray: #f5f6f8;
     --noto-sans: "Noto Sans", sans-serif;
 }
