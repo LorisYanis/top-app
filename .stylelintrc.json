@@ -2,8 +2,7 @@
     "extends": ["stylelint-config-standard", "stylelint-order-config-standard"],
     "plugins": ["stylelint-order"],
     "rules": {
-        "indentation": ["tab"],
-        "color-hex-case": "upper",
-        "ignore": ["camelCase"]
+        "order/order": ["custom-properties", "declarations"],
+        "order/properties-order": ["width", "height"]
     }
 }
