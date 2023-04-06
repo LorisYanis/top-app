@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { Htag, Button, P, Tag, Rating } from "../components";
+import { Layout } from "../layout/Layout";
 
 export default function Home(): JSX.Element {
     const [counter, setCounter] = useState<number>(0);
     const [rating, setRating] = useState<number>(0);
 
     return (
-        <>
+        <Layout>
             <Htag tag="h1">{counter}</Htag>
             <Htag tag="h2">Text</Htag>
             <Htag tag="h3">Text</Htag>
@@ -30,6 +31,6 @@ export default function Home(): JSX.Element {
             <Tag color="primary">Primary</Tag>
             <Rating isEditable rating={rating} setRating={setRating} />
             <Rating rating={rating} />
-        </>
+        </Layout>
     );
 }
