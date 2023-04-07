@@ -1,0 +1,29 @@
+.footer {
+    display: grid;
+    padding: 25px 32px;
+    background: var(--primary);
+    color: var(--white);
+    font-size: 16px;
+    line-height: 24px;
+    grid-template-columns: 1fr auto auto;
+    gap: 40px;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.link:hover {
+    color: var(--gray-light);
+}
+
+@media screen and (width < 764px) {
+    .footer {
+        text-align: center;
+        justify-items: center;
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}

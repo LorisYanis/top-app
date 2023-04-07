@@ -8,12 +8,12 @@ import styles from "./Layout.module.css";
 
 export const Layout = ({ children }: LayoutProps) => {
     return (
-        <>
-            <Header />
-            <Sidebar></Sidebar>
-            <div>{children}</div>
-            <Footer />
-        </>
+        <div className={styles.wrapper}>
+            <Header className={styles.header} />
+            <Sidebar className={styles.sidebar}></Sidebar>
+            <div className={styles.body}>{children}</div>
+            <Footer className={styles.footer} />
+        </div>
     );
 };
 
