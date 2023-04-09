@@ -10,6 +10,8 @@ body {
 
 :root {
     --black: #3b434e;
+    --gray-dark: #4d504a;
+    --gray: #8a8e85;
     --gray-light: #cecece;
     --white: #fff;
     --primary: #7653fc;
