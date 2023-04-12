@@ -39,11 +39,16 @@
     color: var(--gray-dark);
 
     font-weight: 300;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 16px;
 }
 
 .secondLevelBlock {
+    display: none;
+}
+
+.secondLevelBlockOpened {
+    display: block;
 }
 
 .secondLevelBlockOpened:last-child {
