@@ -34,19 +34,19 @@
     color: var(--white);
     background: #de0000;
 
-    font-weight: 600px;
+    font-weight: 600;
 }
 
 .green {
     color: var(--green);
     background: var(--green-light);
 
-    font-weight: 700px;
+    font-weight: 700;
 }
 
 .gray {
     color: var(--white);
     background: #b3c0d9;
 
-    font-weight: 600px;
+    font-weight: 600;
 }

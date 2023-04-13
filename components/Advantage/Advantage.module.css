@@ -1,0 +1,28 @@
+.advantage {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-template-areas: "logo title" "stick description";
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0 40px;
+}
+
+.icon {
+    grid-area: logo;
+}
+
+.title {
+    grid-area: title;
+}
+
+.stick {
+    display: grid;
+    justify-self: center;
+    grid-area: stick;
+    border-left: 1px solid var(--gray-light);
+    height: 64%;
+}
+
+.description {
+    grid-area: description;
+}

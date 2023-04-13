@@ -31,3 +31,9 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
         id: TopLevelCategory.Products,
     },
 ];
+
+export const priceMoney = (money: number): string =>
+    money
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+        .concat(" ¤");

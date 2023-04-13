@@ -1,8 +1,12 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-export interface RatingProps
+export interface SortProps
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    isEditable?: boolean;
-    rating: number;
-    setRating?: (rating: number) => void;
+    sort: SortEnum;
+    setSort: (sort: SortEnum) => void;
+}
+
+export enum SortEnum {
+    Rating,
+    Price,
 }

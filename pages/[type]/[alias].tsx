@@ -9,10 +9,17 @@ import {
 import { ParsedUrlQuery } from "node:querystring";
 import { ProductModel } from "../../interfaces/product.interface";
 import { firstLevelMenu } from "../../helpers/helpers";
+import { TopPageComponent } from "../../page-components";
 import axios from "axios";
 
-function TopPage({ menu, page, products }: TopPageProps): JSX.Element {
-    return <>{products && products.length}</>;
+function TopPage({ firstCategory, page, products }: TopPageProps): JSX.Element {
+    return (
+        <TopPageComponent
+            page={page}
+            products={products}
+            firstCategory={firstCategory}
+        />
+    );
 }
 
 export default withLayout(TopPage);

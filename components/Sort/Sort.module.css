@@ -1,0 +1,24 @@
+.sort {
+    /* display: inline-block; */
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 40px;
+    cursor: pointer;
+    justify-content: flex-start;
+    user-select: none;
+}
+
+.active {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.sortIcon {
+    display: none;
+}
+
+.active .sortIcon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+}
