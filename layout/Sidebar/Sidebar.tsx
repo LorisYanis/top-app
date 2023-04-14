@@ -1,3 +1,4 @@
+import { Search } from "../../components";
 import { SidebarProps } from "./Sidebar.props";
 import { Menu } from "../Menu/Menu";
 import Logo from "../logo.svg";
@@ -8,7 +9,7 @@ export const Sidebar = ({ className, ...props }: SidebarProps) => {
     return (
         <div className={cn(styles.sidebar, className)} {...props}>
             <Logo className={styles.logo} />
-            <div>search</div>
+            <Search />
             <Menu />
         </div>
     );
