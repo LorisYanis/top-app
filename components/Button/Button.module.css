@@ -36,6 +36,10 @@
     margin-left: 10px;
 }
 
+.arrowDown {
+    transform: rotate(90deg);
+}
+
 .primary .arrow,
 .ghost:hover .arrow {
     fill: var(--white);
