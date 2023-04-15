@@ -1,19 +1,10 @@
 import { ProductProps } from "./Product.props";
-import { Button, Card, Rating, Tag } from "..";
+import { Button, Card, Divider, Rating, Tag } from "..";
 import cn from "classnames";
 import styles from "./Product.module.css";
+import { decOfNumber, priceMoney } from "../../helpers/helpers";
 
 export const Product = ({ product, className, ...props }: ProductProps) => {
-    let reviews: string;
-
-    if (product.reviewCount === 1) {
-        reviews = "отзыв";
-    } else if (product.reviewCount > 1 && product.reviewCount < 5) {
-        reviews = "отзыва";
-    } else {
-        reviews = "отзывов";
-    }
-
     return (
         <Card className={cn(styles.product, className)}>
             <div className={styles.logo}>
@@ -23,14 +14,28 @@ export const Product = ({ product, className, ...props }: ProductProps) => {
                 />
             </div>
             <div className={styles.title}>{product.title}</div>
-            <div className={styles.price}>{product.price}</div>
-            <div className={styles.credit}>{product.credit}</div>
+            <div className={styles.price}>
+                {priceMoney(product.price)}
+                {product.oldPrice && (
+                    <Tag className={styles.oldPrice} color="green">
+                        {priceMoney(product.price - product.oldPrice)}
+                    </Tag>
+                )}
+            </div>
+            <div className={styles.credit}>
+                {priceMoney(product.credit)}/
+                <span className={styles.month}>мес</span>
+            </div>
             <div className={styles.rating}>
-                <Rating rating={product.reviewAvg ?? 0} />
+                <Rating rating={product.reviewAvg ?? product.initialRating} />
             </div>
             <div className={styles.tags}>
                 {product.categories.map((category) => (
-                    <Tag key={category} color="ghost">
+                    <Tag
+                        className={styles.category}
+                        key={category}
+                        color="ghost"
+                    >
                         {category}
                     </Tag>
                 ))}
@@ -38,29 +43,53 @@ export const Product = ({ product, className, ...props }: ProductProps) => {
             <div className={styles.priceTitle}>цена</div>
             <div className={styles.creditTitle}>кредит</div>
             <div className={styles.rateTitle}>
-                {product.reviewCount} {reviews}
+                {product.reviewCount}{" "}
+                {decOfNumber(product.reviewCount, [
+                    "отзыв",
+                    "отзыва",
+                    "отзывов",
+                ])}
             </div>
-            <div className={styles.hr}>
-                <hr />
-            </div>
+            <Divider className={styles.hr} />
             <div className={styles.description}>{product.description}</div>
-            <div className={styles.features}>features</div>
+            <div className={styles.features}>
+                {product.characteristics.map((characteristic) => (
+                    <div
+                        className={styles.characteristic}
+                        key={characteristic.name}
+                    >
+                        <span className={styles.characteristicName}>
+                            {characteristic.name}
+                        </span>
+                        <span className={styles.characteristicDots}></span>
+                        <span className={styles.characteristicValue}>
+                            {characteristic.value}
+                        </span>
+                    </div>
+                ))}
+            </div>
             <div className={styles.advBlock}>
-                <div className={styles.advantages}>
-                    <div>Преимущества</div>
-                    <div>{product.advantages}</div>
-                </div>
-                <div className={styles.disadvantages}>
-                    <div>Недостатки</div>
-                    <div>{product.disAdvantages}</div>
-                </div>
+                {product.advantages && (
+                    <div className={styles.advantages}>
+                        <div className={styles.advTitle}>Преимущества</div>
+                        <div>{product.advantages}</div>
+                    </div>
+                )}
+                {product.disAdvantages && (
+                    <div className={styles.disadvantages}>
+                        <div className={styles.advTitle}>Недостатки</div>
+                        <div>{product.disAdvantages}</div>
+                    </div>
+                )}
             </div>
-            <div className={styles.hr}>
-                <hr />
-            </div>
+            <Divider className={styles.hr} />
             <div className={styles.actions}>
                 <Button appearance="primary">Узнать подробнее</Button>
-                <Button appearance="ghost" arrow="right">
+                <Button
+                    className={styles.reviewButton}
+                    appearance="ghost"
+                    arrow="right"
+                >
                     Читать отзывы
                 </Button>
             </div>
