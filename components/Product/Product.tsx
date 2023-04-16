@@ -1,16 +1,19 @@
 import { ProductProps } from "./Product.props";
 import { Button, Card, Divider, Rating, Tag } from "..";
+import { decOfNumber, priceMoney } from "../../helpers/helpers";
+import Image from "next/image";
 import cn from "classnames";
 import styles from "./Product.module.css";
-import { decOfNumber, priceMoney } from "../../helpers/helpers";
 
 export const Product = ({ product, className, ...props }: ProductProps) => {
     return (
         <Card className={cn(styles.product, className)}>
             <div className={styles.logo}>
-                <img
+                <Image
                     src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
                     alt={product.title}
+                    width={70}
+                    height={70}
                 />
             </div>
             <div className={styles.title}>{product.title}</div>

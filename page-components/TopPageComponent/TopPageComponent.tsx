@@ -70,7 +70,7 @@ export const TopPageComponent = ({
                 </Htag>
                 <div className={styles.tags}>
                     {page.tags.map((tag) => (
-                        <Tag className="tag" color="primary">
+                        <Tag className="tag" key={tag} color="primary">
                             {tag}
                         </Tag>
                     ))}
