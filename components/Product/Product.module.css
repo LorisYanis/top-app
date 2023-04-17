@@ -143,6 +143,24 @@
     margin-right: 10px;
 }
 
+.review {
+    display: grid;
+    margin-top: -30px;
+
+    margin-bottom: 30px;
+}
+
+.opened {
+    max-height: auto;
+    padding: 30px;
+}
+
+.closed {
+    overflow: hidden;
+    max-height: 0;
+    padding: 0;
+}
+
 @media screen and (width < 1320px) {
     .product {
         grid-template-columns: 70px 30px auto 40px auto 40px 1fr;
@@ -269,6 +287,7 @@
             "advBlock"
             "hr2"
             "actions";
+        justify-content: center;
     }
 
     .actions {

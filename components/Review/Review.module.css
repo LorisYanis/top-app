@@ -1,0 +1,58 @@
+.review {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-areas:
+        "user nameBlock date rating"
+        "description description description description";
+    gap: 10px;
+    align-items: center;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.user {
+    grid-area: user;
+}
+
+.nameBlock {
+    grid-area: nameBlock;
+}
+
+.name {
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+.date {
+    grid-area: date;
+    margin-right: 10px;
+}
+
+.rating {
+    grid-area: rating;
+}
+
+.description {
+    grid-area: description;
+}
+
+@media screen and (width < 865px) {
+    .review {
+        grid-template-columns: 30px auto 1fr;
+        grid-template-areas:
+            "user nameBlock nameBlock"
+            "date date rating"
+            "description description description";
+    }
+}
+
+@media screen and (width < 340px) {
+    .review {
+        grid-template-columns: 30px 1fr;
+        grid-template-areas:
+            "user nameBlock"
+            "date date"
+            "rating rating"
+            " description description";
+    }
+}
