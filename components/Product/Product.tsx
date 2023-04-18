@@ -56,7 +56,7 @@ export const Product = ({ product }: ProductProps) => {
                 <div className={styles.priceTitle}>цена</div>
                 <div className={styles.creditTitle}>кредит</div>
                 <div className={styles.rateTitle}>
-                    {product.reviewCount}
+                    <span>{product.reviewCount}</span>
                     {decOfNumber(product.reviewCount, [
                         "отзыв",
                         "отзыва",

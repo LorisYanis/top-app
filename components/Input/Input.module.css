@@ -1,3 +1,7 @@
+.inputWrapper {
+    position: relative;
+}
+
 .input {
     padding: 7px 15px;
     border-radius: 5px;
@@ -15,4 +19,15 @@
 
 .input:focus {
     outline: 2px solid var(--primary);
+}
+
+.error {
+    border: 1px solid var(--red);
+}
+
+.errorMessage {
+    position: absolute;
+    color: var(--red);
+    bottom: -21px;
+    left: 0;
 }

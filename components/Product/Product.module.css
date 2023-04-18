@@ -94,6 +94,10 @@
     line-height: 19px;
 }
 
+.rateTitle span {
+    margin-right: 4px;
+}
+
 .characteristic {
     display: grid;
     grid-template-columns: auto 1fr auto;

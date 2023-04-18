@@ -12,9 +12,11 @@
 }
 
 .rating {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-items: center;
+    align-items: center;
     gap: 20px;
-    align-content: center;
 }
 
 .textarea {

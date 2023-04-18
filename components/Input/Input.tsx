@@ -5,15 +5,22 @@ import styles from "./Input.module.css";
 
 export const Input = forwardRef(
     (
-        { className, ...props }: InputProps,
+        { error, className, ...props }: InputProps,
         ref: ForwardedRef<HTMLInputElement>
     ) => {
         return (
-            <input
-                className={cn(styles.input, className)}
-                ref={ref}
-                {...props}
-            />
+            <div className={styles.inputWrapper}>
+                <input
+                    className={cn(styles.input, className, {
+                        [styles.error]: error,
+                    })}
+                    ref={ref}
+                    {...props}
+                />
+                <span className={styles.errorMessage}>
+                    {error && error.message}
+                </span>
+            </div>
         );
     }
 );

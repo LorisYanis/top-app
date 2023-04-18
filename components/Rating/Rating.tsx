@@ -12,7 +12,7 @@ import styles from "./Rating.module.css";
 
 export const Rating = forwardRef(
     (
-        { isEditable = false, rating, setRating, ...props }: RatingProps,
+        { isEditable = false, rating, setRating, error, ...props }: RatingProps,
         ref: ForwardedRef<HTMLDivElement>
     ) => {
         const [ratingArray, setRatingArray] = useState<JSX.Element[]>(
@@ -68,10 +68,19 @@ export const Rating = forwardRef(
         };
 
         return (
-            <div ref={ref} {...props}>
+            <div
+                className={cn(styles.ratingWrapper, {
+                    [styles.ratingError]: error,
+                })}
+                ref={ref}
+                {...props}
+            >
                 {ratingArray.map((r: JSX.Element, i: number) => (
                     <span key={i}>{r}</span>
                 ))}
+                {error && (
+                    <span className={styles.errorMessage}>{error.message}</span>
+                )}
             </div>
         );
     }
