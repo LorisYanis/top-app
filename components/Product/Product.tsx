@@ -6,7 +6,7 @@ import Image from "next/image";
 import cn from "classnames";
 import styles from "./Product.module.css";
 
-export const Product = ({ product, ...props }: ProductProps) => {
+export const Product = ({ product }: ProductProps) => {
     const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
 
     const openCard = () => {
@@ -56,7 +56,7 @@ export const Product = ({ product, ...props }: ProductProps) => {
                 <div className={styles.priceTitle}>цена</div>
                 <div className={styles.creditTitle}>кредит</div>
                 <div className={styles.rateTitle}>
-                    {product.reviewCount}{" "}
+                    {product.reviewCount}
                     {decOfNumber(product.reviewCount, [
                         "отзыв",
                         "отзыва",
@@ -118,10 +118,10 @@ export const Product = ({ product, ...props }: ProductProps) => {
                 color="blue"
             >
                 {product.reviews.map((review) => (
-                    <>
-                        <Review key={review._id} review={review} />
+                    <div key={review._id}>
+                        <Review review={review} />
                         <Divider />
-                    </>
+                    </div>
                 ))}
                 <ReviewForm productId={product._id} />
             </Card>
