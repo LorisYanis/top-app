@@ -1,20 +1,26 @@
 import { ProductProps } from "./Product.props";
 import { Button, Card, Divider, Rating, Review, ReviewForm, Tag } from "..";
 import { decOfNumber, priceMoney } from "../../helpers/helpers";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import cn from "classnames";
 import styles from "./Product.module.css";
+import Link from "next/link";
 
-export const Product = ({ product }: ProductProps) => {
+export const Product = ({ product, className, ...props }: ProductProps) => {
     const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
+    const reviewRef = useRef<HTMLDivElement>(null);
 
-    const openCard = () => {
-        setIsReviewOpened(!isReviewOpened);
+    const scrollToReview = () => {
+        setIsReviewOpened(true);
+        reviewRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
     };
 
     return (
-        <>
+        <div className={className} {...props}>
             <Card className={cn(styles.product)}>
                 <div className={styles.logo}>
                     <Image
@@ -56,12 +62,14 @@ export const Product = ({ product }: ProductProps) => {
                 <div className={styles.priceTitle}>цена</div>
                 <div className={styles.creditTitle}>кредит</div>
                 <div className={styles.rateTitle}>
-                    <span>{product.reviewCount}</span>
-                    {decOfNumber(product.reviewCount, [
-                        "отзыв",
-                        "отзыва",
-                        "отзывов",
-                    ])}
+                    <a onClick={scrollToReview}>
+                        <span>{product.reviewCount}</span>
+                        {decOfNumber(product.reviewCount, [
+                            "отзыв",
+                            "отзыва",
+                            "отзывов",
+                        ])}
+                    </a>
                 </div>
                 <Divider className={styles.hr} />
                 <div className={styles.description}>{product.description}</div>
@@ -104,7 +112,9 @@ export const Product = ({ product }: ProductProps) => {
                         className={styles.button2}
                         appearance="ghost"
                         arrow={isReviewOpened ? "down" : "right"}
-                        onClick={openCard}
+                        onClick={() => {
+                            setIsReviewOpened(!isReviewOpened);
+                        }}
                     >
                         Читать отзывы
                     </Button>
@@ -116,6 +126,7 @@ export const Product = ({ product }: ProductProps) => {
                     [styles.opened]: isReviewOpened,
                 })}
                 color="blue"
+                ref={reviewRef}
             >
                 {product.reviews.map((review) => (
                     <div key={review._id}>
@@ -125,6 +136,6 @@ export const Product = ({ product }: ProductProps) => {
                 ))}
                 <ReviewForm productId={product._id} />
             </Card>
-        </>
+        </div>
     );
 };

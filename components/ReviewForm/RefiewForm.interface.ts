@@ -4,3 +4,7 @@ export interface IReviewForm {
     textarea: string,
     rating: number,
 }
+
+export interface IReviewFormSentResponse {
+    message: string;
+}

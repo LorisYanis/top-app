@@ -94,6 +94,12 @@
     line-height: 19px;
 }
 
+.rateTitle a {
+    color: var(--primary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .rateTitle span {
     margin-right: 4px;
 }

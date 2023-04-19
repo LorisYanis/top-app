@@ -32,23 +32,36 @@
     margin-left: 15px;
 }
 
-.success {
-    background: var(--green-light);
+.success,
+.error {
     padding: 20px;
     position: relative;
     border-radius: 5px;
     margin-top: 30px;
 }
 
+.success {
+    background: var(--green-light);
+}
+
 .successTitle {
     font-weight: 700;
 }
 
-.closeIcon {
+.successCloseIcon,
+.errorCloseIcon {
     position: absolute;
     top: 20px;
     right: 20px;
     cursor: pointer;
+}
+
+.error {
+    background: var(--red-light);
+}
+
+.errorCloseIcon path {
+    stroke: var(--red);
 }
 
 @media screen and (width < 1160px) {
