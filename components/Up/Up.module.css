@@ -1,31 +1,7 @@
 .up {
-    display: grid;
-    justify-items: center;
-    align-items: center;
-
-    width: 40px;
-    height: 40px;
-
     position: fixed;
     bottom: 40px;
     right: 40px;
     z-index: 1000;
-
-    background: var(--primary);
-    border: none;
     border-radius: 10px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
-
-    cursor: pointer;
-    user-select: none;
-
-    transition: all 0.2s;
-}
-
-.up:hover {
-    background: var(--primary-hover);
-}
-
-.up:active {
-    transform: scale(1.05);
 }
