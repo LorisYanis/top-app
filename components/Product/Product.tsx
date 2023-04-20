@@ -25,6 +25,19 @@ export const Product = motion(
                 });
             };
 
+            const variants = {
+                hidden: {
+                    opacity: 0,
+                    padding: 0,
+                    height: 0,
+                },
+                visible: {
+                    opacity: 1,
+                    padding: 30,
+                    height: "auto",
+                },
+            };
+
             return (
                 <div className={className} ref={ref} {...props}>
                     <Card className={cn(styles.product)}>
@@ -151,7 +164,11 @@ export const Product = motion(
                             [styles.closed]: !isReviewOpened,
                             [styles.opened]: isReviewOpened,
                         })}
+                        // layout
                         color="blue"
+                        initial={"hidden"}
+                        variants={variants}
+                        animate={isReviewOpened ? "visible" : "hidden"}
                         ref={reviewRef}
                     >
                         {product.reviews.map((review) => (

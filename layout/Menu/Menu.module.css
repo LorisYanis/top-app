@@ -47,6 +47,11 @@
     overflow: hidden;
 }
 
+.thirdLevelLink {
+    display: block;
+    height: 100%;
+}
+
 .thirdLevel {
     display: block;
     text-decoration: none;

@@ -1,11 +1,18 @@
-import { Advantage, HhData, Htag, Product, Sort, Tag } from "../../components";
+import {
+    Advantage,
+    HhData,
+    Htag,
+    Product,
+    Sort,
+    Tag,
+    Up,
+} from "../../components";
 import { TopPageComponentProps } from "./TopPageComponent.props";
-import styles from "./TopPageComponent.module.css";
 import { TopLevelCategory } from "../../interfaces/page.interface";
 import { SortEnum } from "../../components/Sort/Sort.props";
 import { useEffect, useReducer } from "react";
 import { sortReducer } from "./sort.reducer";
-import { useScrollY } from "../../hooks/useScrollY";
+import styles from "./TopPageComponent.module.css";
 
 export const TopPageComponent = ({
     firstCategory,
@@ -27,6 +34,7 @@ export const TopPageComponent = ({
 
     return (
         <div className={styles.wrapper}>
+            <Up />
             <div className={styles.title}>
                 <Htag tag="h1">{page.title}</Htag>
                 {products && (

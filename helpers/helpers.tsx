@@ -49,3 +49,12 @@ export const decOfNumber = (
             : cases[number % 10 < 5 ? number % 10 : 5]
     ];
 };
+
+export const scrollTopButtonAnimation = (currentY: number): number => {
+    switch (currentY) {
+        case 0:
+            return 0;
+        default:
+            return 1;
+    }
+};

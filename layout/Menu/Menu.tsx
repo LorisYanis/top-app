@@ -107,7 +107,11 @@ export const Menu = (): JSX.Element => {
 
     const buildThirdLevel = (pages: PageItem[], route: string) => {
         return pages.map((p) => (
-            <motion.div variants={variantsChildren} key={p._id}>
+            <motion.div
+                className={styles.thirdLevelLink}
+                variants={variantsChildren}
+                key={p._id}
+            >
                 <Link legacyBehavior href={`/${route}/${p.alias}`}>
                     <a
                         className={cn(styles.thirdLevel, {
