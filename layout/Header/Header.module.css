@@ -1,0 +1,24 @@
+.header {
+    grid-template-columns: 1fr 40px;
+    gap: 10px;
+    margin: 15px 15px 0 15px;
+}
+
+.mobileMenu {
+    position: fixed;
+    z-index: 1100;
+    background: var(--bg-gray);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 15px;
+    overflow-y: scroll;
+}
+
+.closeIcon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1200;
+}
