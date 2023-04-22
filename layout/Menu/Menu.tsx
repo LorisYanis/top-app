@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { KeyboardEventHandler, useContext } from "react";
 import { AppContext } from "../../context/app.context";
 import { FirstLevelMenuItem, PageItem } from "../../interfaces/menu.interface";
 import { firstLevelMenu } from "../../helpers/helpers";
@@ -43,6 +43,12 @@ export const Menu = (): JSX.Element => {
             );
     };
 
+    const openSecondLevelKey = (key: KeyboardEvent, secondCategory: string) => {
+        if (key.key === "Enter") {
+            openSecondLevel(secondCategory);
+        }
+    };
+
     const buildFirstLevel = () => {
         return (
             <>
@@ -83,6 +89,13 @@ export const Menu = (): JSX.Element => {
                         <div key={m._id.secondCategory}>
                             <div
                                 className={styles.secondLevel}
+                                tabIndex={0}
+                                onKeyDown={(key: KeyboardEvent) =>
+                                    openSecondLevelKey(
+                                        key,
+                                        m._id.secondCategory
+                                    )
+                                }
                                 onClick={() =>
                                     openSecondLevel(m._id.secondCategory)
                                 }
@@ -96,7 +109,11 @@ export const Menu = (): JSX.Element => {
                                 variants={variants}
                                 className={cn(styles.secondLevelBlock)}
                             >
-                                {buildThirdLevel(m.pages, menuItem.route)}
+                                {buildThirdLevel(
+                                    m.pages,
+                                    menuItem.route,
+                                    m.isOpened ?? false
+                                )}
                             </motion.div>
                         </div>
                     );
@@ -105,7 +122,11 @@ export const Menu = (): JSX.Element => {
         );
     };
 
-    const buildThirdLevel = (pages: PageItem[], route: string) => {
+    const buildThirdLevel = (
+        pages: PageItem[],
+        route: string,
+        isOpened: boolean
+    ) => {
         return pages.map((p) => (
             <motion.div
                 className={styles.thirdLevelLink}
@@ -118,6 +139,7 @@ export const Menu = (): JSX.Element => {
                             [styles.thirdLevelActive]:
                                 `/${route}/${p.alias}` == router.asPath,
                         })}
+                        tabIndex={isOpened === true ? 0 : -1}
                     >
                         {p.category}
                     </a>

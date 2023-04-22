@@ -1,6 +1,17 @@
+.ratingWrapper {
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.starWrapper {
+    display: flex;
+    justify-self: center;
+}
+
 .star {
-    padding-right: 5px;
     transition: all 0.2s;
+    padding: 0 2.5px;
 }
 
 .filled {
@@ -9,10 +20,6 @@
 
 .editable {
     cursor: pointer;
-}
-
-.ratingWrapper {
-    position: relative;
 }
 
 .ratingError svg {

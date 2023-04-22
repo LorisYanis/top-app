@@ -23,6 +23,18 @@ export const Product = motion(
                     behavior: "smooth",
                     block: "start",
                 });
+                reviewRef.current.focus();
+            };
+
+            const scrollToReviewTab = (key: KeyboardEvent) => {
+                if (key.key === "Enter") {
+                    setIsReviewOpened(true);
+                    reviewRef.current?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    });
+                    reviewRef.current?.focus();
+                }
             };
 
             const variants = {
@@ -88,7 +100,13 @@ export const Product = motion(
                         <div className={styles.priceTitle}>цена</div>
                         <div className={styles.creditTitle}>кредит</div>
                         <div className={styles.rateTitle}>
-                            <a onClick={scrollToReview}>
+                            <a
+                                onClick={scrollToReview}
+                                tabIndex={0}
+                                onKeyDown={(key: KeyboardEvent) =>
+                                    scrollToReviewTab(key)
+                                }
+                            >
                                 <span>{product.reviewCount}</span>
                                 {decOfNumber(product.reviewCount, [
                                     "отзыв",
@@ -164,11 +182,11 @@ export const Product = motion(
                             [styles.closed]: !isReviewOpened,
                             [styles.opened]: isReviewOpened,
                         })}
-                        // layout
                         color="blue"
                         initial={"hidden"}
                         variants={variants}
                         animate={isReviewOpened ? "visible" : "hidden"}
+                        tabIndex={isReviewOpened ? 0 : -1}
                         ref={reviewRef}
                     >
                         {product.reviews.map((review) => (
@@ -177,7 +195,10 @@ export const Product = motion(
                                 <Divider />
                             </div>
                         ))}
-                        <ReviewForm productId={product._id} />
+                        <ReviewForm
+                            productId={product._id}
+                            isOpened={isReviewOpened}
+                        />
                     </Card>
                 </div>
             );

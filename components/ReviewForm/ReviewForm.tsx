@@ -11,6 +11,7 @@ import axios from "axios";
 
 export const ReviewForm = ({
     productId,
+    isOpened,
     className,
     ...props
 }: ReviewFormProps) => {
@@ -52,6 +53,7 @@ export const ReviewForm = ({
                     })}
                     error={errors.name}
                     placeholder="Имя"
+                    tabIndex={isOpened ? 0 : -1}
                 />
                 <Input
                     className={styles.inputTitle}
@@ -63,6 +65,7 @@ export const ReviewForm = ({
                     })}
                     error={errors.title}
                     placeholder="Заголовок отзыва"
+                    tabIndex={isOpened ? 0 : -1}
                 />
                 <div className={styles.rating}>
                     <span>Оценка:</span>
@@ -82,6 +85,7 @@ export const ReviewForm = ({
                                 error={errors.rating}
                                 setRating={field.onChange}
                                 ref={field.ref}
+                                tabIndex={isOpened ? 0 : -1}
                             />
                         )}
                     />
@@ -96,9 +100,12 @@ export const ReviewForm = ({
                     })}
                     error={errors.textarea}
                     placeholder="Текст отзыва"
+                    tabIndex={isOpened ? 0 : -1}
                 />
                 <div className={styles.submit}>
-                    <Button appearance="primary">Отправить</Button>
+                    <Button appearance="primary" tabIndex={isOpened ? 0 : -1}>
+                        Отправить
+                    </Button>
                     <span className={styles.info}>
                         * Перед публикацией отзыв пройдет предварительную
                         модерацию и проверку
