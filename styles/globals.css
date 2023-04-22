@@ -11,14 +11,14 @@ body {
 :root {
     --black: #3b434e;
     --gray-dark: #4d504a;
-    --gray: #8a8e85;
+    --gray: #6e716a;
     --gray-light: #cecece;
     --white: #fff;
-    --primary: #536cfc;
-    --primary-hover: #3851e2;
+    --primary: #4c63e6;
+    --primary-hover: #3c51c9;
     --red: #fc836d;
     --red-light: #ffc0b7;
-    --green: #1dc37e;
+    --green: #007b48;
     --green-light: #c8f8e4;
     --bg-gray: #f5f6f8;
     --noto-sans: "Noto Sans", sans-serif;
