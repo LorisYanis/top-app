@@ -15,32 +15,41 @@ export const Sort = ({ sort, setSort, className, ...props }: SortProps) => {
 
     return (
         <div className={cn(styles.sort, className)} {...props}>
-            <span
+            <div style={{ display: "none" }} id="sort">
+                Сортировка
+            </div>
+            <button
                 className={cn({
                     [styles.active]: sort === SortEnum.Rating,
                 })}
+                id="rating"
                 onClick={() => setSort(SortEnum.Rating)}
                 tabIndex={0}
                 onKeyDown={(key: KeyboardEvent) =>
                     onSortHandle(key, SortEnum.Rating)
                 }
+                aria-labelledby="sort rating"
+                aria-selected={sort === SortEnum.Rating}
             >
                 <SortIcon className={styles.sortIcon} />
                 По рейтингу
-            </span>
-            <span
+            </button>
+            <button
                 className={cn({
                     [styles.active]: sort === SortEnum.Price,
                 })}
+                id="price"
                 onClick={() => setSort(SortEnum.Price)}
                 tabIndex={0}
                 onKeyDown={(key: KeyboardEvent) =>
                     onSortHandle(key, SortEnum.Price)
                 }
+                aria-labelledby="sort price"
+                aria-selected={sort === SortEnum.Price}
             >
                 <SortIcon className={styles.sortIcon} />
                 По цене
-            </span>
+            </button>
         </div>
     );
 };

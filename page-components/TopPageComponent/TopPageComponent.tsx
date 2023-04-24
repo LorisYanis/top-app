@@ -1,4 +1,4 @@
-    import {
+import {
     Advantage,
     HhData,
     Htag,
@@ -12,6 +12,7 @@ import { TopLevelCategory } from "../../interfaces/page.interface";
 import { SortEnum } from "../../components/Sort/Sort.props";
 import { useEffect, useReducer } from "react";
 import { sortReducer } from "./sort.reducer";
+import { decOfNumber } from "../../helpers/helpers";
 import styles from "./TopPageComponent.module.css";
 
 export const TopPageComponent = ({
@@ -38,7 +39,14 @@ export const TopPageComponent = ({
             <div className={styles.title}>
                 <Htag tag="h1">{page.title}</Htag>
                 {products && (
-                    <Tag size="big" color="gray">
+                    <Tag
+                        size="big"
+                        color="gray"
+                        aria-label={`${products.length} ${decOfNumber(
+                            products.length,
+                            ["курс", "курса", "курсов"]
+                        )}`}
+                    >
                         {products.length}
                     </Tag>
                 )}
