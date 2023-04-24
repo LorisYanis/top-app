@@ -33,9 +33,14 @@ export const Layout = ({ children }: LayoutProps) => {
             </a>
             <Header className={styles.header} />
             <Sidebar className={styles.sidebar}></Sidebar>
-            <div className={styles.body} ref={bodyRef} tabIndex={0}>
+            <main
+                className={styles.body}
+                ref={bodyRef}
+                tabIndex={0}
+                role="main"
+            >
                 {children}
-            </div>
+            </main>
             <Footer className={styles.footer} />
         </div>
     );
