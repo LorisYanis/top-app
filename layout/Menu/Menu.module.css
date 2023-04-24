@@ -32,7 +32,7 @@
 .secondBlock {
     margin-top: 15px;
     margin-left: 12px;
-    padding-left: 0 0 0 32px;
+    padding: 0 0 0 24px;
     border-left: 1px solid var(--gray-light);
     list-style: none;
 }
@@ -55,6 +55,7 @@
 
 .secondLevelBlock {
     overflow: hidden;
+    padding: 0;
 }
 
 .thirdLevelLink {
@@ -63,7 +64,12 @@
 }
 
 .thirdLevel {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+
     text-decoration: none;
     margin-bottom: 8px;
     cursor: pointer;
