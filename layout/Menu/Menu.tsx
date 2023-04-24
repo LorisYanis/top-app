@@ -43,23 +43,17 @@ export const Menu = (): JSX.Element => {
             );
     };
 
-    const openSecondLevelKey = (key: KeyboardEvent, secondCategory: string) => {
-        if (key.key === "Enter") {
-            openSecondLevel(secondCategory);
-        }
-    };
-
     const buildFirstLevel = () => {
         return (
-            <>
+            <ul className={styles.firstLevelList}>
                 {firstLevelMenu.map((m) => (
-                    <div key={m.route}>
+                    <li key={m.route} aria-expanded={m.id === firstCategory}>
                         <Link legacyBehavior href={`/${m.route}`}>
                             <a className={styles.mainLink}>
                                 <div
                                     className={cn(styles.firstLevel, {
                                         [styles.firstLevelActive]:
-                                            m.id == firstCategory,
+                                            m.id === firstCategory,
                                     })}
                                 >
                                     {m.icon}
@@ -68,15 +62,15 @@ export const Menu = (): JSX.Element => {
                             </a>
                         </Link>
                         {m.id == firstCategory && buildSecondLevel(m)}
-                    </div>
+                    </li>
                 ))}
-            </>
+            </ul>
         );
     };
 
     const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
         return (
-            <div className={styles.secondBlock}>
+            <ul className={styles.secondBlock}>
                 {menu.map((m) => {
                     if (
                         m.pages
@@ -86,23 +80,18 @@ export const Menu = (): JSX.Element => {
                         m.isOpened = true;
                     }
                     return (
-                        <div key={m._id.secondCategory}>
-                            <div
+                        <li key={m._id.secondCategory}>
+                            <button
                                 className={styles.secondLevel}
                                 tabIndex={0}
-                                onKeyDown={(key: KeyboardEvent) =>
-                                    openSecondLevelKey(
-                                        key,
-                                        m._id.secondCategory
-                                    )
-                                }
                                 onClick={() =>
                                     openSecondLevel(m._id.secondCategory)
                                 }
+                                aria-expanded={m.isOpened ? true : false}
                             >
                                 {m._id.secondCategory}
-                            </div>
-                            <motion.div
+                            </button>
+                            <motion.ul
                                 layout
                                 initial={m.isOpened ? "visible" : "hidden"}
                                 animate={m.isOpened ? "visible" : "hidden"}
@@ -114,11 +103,11 @@ export const Menu = (): JSX.Element => {
                                     menuItem.route,
                                     m.isOpened ?? false
                                 )}
-                            </motion.div>
-                        </div>
+                            </motion.ul>
+                        </li>
                     );
                 })}
-            </div>
+            </ul>
         );
     };
 
@@ -128,7 +117,7 @@ export const Menu = (): JSX.Element => {
         isOpened: boolean
     ) => {
         return pages.map((p) => (
-            <motion.div
+            <motion.li
                 className={styles.thirdLevelLink}
                 variants={variantsChildren}
                 key={p._id}
@@ -140,11 +129,16 @@ export const Menu = (): JSX.Element => {
                                 `/${route}/${p.alias}` == router.asPath,
                         })}
                         tabIndex={isOpened === true ? 0 : -1}
+                        aria-current={
+                            `/${route}/${p.alias}` == router.asPath
+                                ? "page"
+                                : false
+                        }
                     >
                         {p.category}
                     </a>
                 </Link>
-            </motion.div>
+            </motion.li>
         ));
     };
 

@@ -25,6 +25,7 @@ export const Up = (): JSX.Element => {
             className={styles.up}
             initial={{ opacity: 0 }}
             animate={controls}
+            aria-hidden="true"
         >
             <ButtonIcon
                 appearance="primary"
