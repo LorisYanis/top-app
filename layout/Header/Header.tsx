@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { HeaderProps } from "./Header.props";
 import { ButtonIcon } from "../../components";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Sidebar } from "../Sidebar/Sidebar";
 import cn from "classnames";
 import styles from "./Header.module.css";
@@ -12,6 +12,7 @@ import Link from "next/link";
 export const Header = ({ className, ...props }: HeaderProps) => {
     const [isMenuShowed, setIsMenuShowed] = useState<boolean>(false);
     const route = useRouter();
+    const shouldReduceMotion = useReducedMotion();
 
     useEffect(() => {
         setIsMenuShowed(false);
@@ -19,16 +20,18 @@ export const Header = ({ className, ...props }: HeaderProps) => {
 
     const variants = {
         closed: {
-            opacity: 0,
-            x: "100%",
+            opacity: shouldReduceMotion ? 1 : 0,
+            x: shouldReduceMotion ? 0 : "100%",
         },
         opened: {
             opacity: 1,
             x: 0,
-            transition: {
-                stiffness: 100,
-                type: "spring",
-            },
+            transition: shouldReduceMotion
+                ? {}
+                : {
+                      stiffness: 100,
+                      type: "spring",
+                  },
         },
     };
 

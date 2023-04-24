@@ -13,6 +13,7 @@ import { SortEnum } from "../../components/Sort/Sort.props";
 import { useEffect, useReducer } from "react";
 import { sortReducer } from "./sort.reducer";
 import { decOfNumber } from "../../helpers/helpers";
+import { useReducedMotion } from "framer-motion";
 import styles from "./TopPageComponent.module.css";
 
 export const TopPageComponent = ({
@@ -24,6 +25,7 @@ export const TopPageComponent = ({
         sortReducer,
         { products, sort: SortEnum.Rating }
     );
+    const shouldReduceMotion = useReducedMotion();
 
     useEffect(() => {
         dispatchSort({ type: "reset", initialState: products });
@@ -55,7 +57,12 @@ export const TopPageComponent = ({
             <div role="list">
                 {sortedProducts &&
                     sortedProducts.map((product) => (
-                        <Product role="listitem" layout key={product._id} product={product} />
+                        <Product
+                            role="listitem"
+                            layout={shouldReduceMotion ? false : true}
+                            key={product._id}
+                            product={product}
+                        />
                     ))}
             </div>
             <div className={styles.hhTitle}>

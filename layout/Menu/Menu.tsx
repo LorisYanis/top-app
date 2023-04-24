@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
-import { KeyboardEventHandler, useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../context/app.context";
 import { FirstLevelMenuItem, PageItem } from "../../interfaces/menu.interface";
 import { firstLevelMenu } from "../../helpers/helpers";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import cn from "classnames";
 import Link from "next/link";
 import styles from "./Menu.module.css";
@@ -11,20 +11,23 @@ import styles from "./Menu.module.css";
 export const Menu = (): JSX.Element => {
     const { menu, setMenu, firstCategory } = useContext(AppContext);
     const router = useRouter();
+    const shouldReduceMotion = useReducedMotion();
 
     const variants = {
         hidden: { marginBottom: 0 },
         visible: {
             marginBottom: 20,
-            transition: {
-                when: "beforeChildren",
-                staggerChildren: 0.04,
-            },
+            transition: shouldReduceMotion
+                ? {}
+                : {
+                      when: "beforeChildren",
+                      staggerChildren: 0.04,
+                  },
         },
     };
 
     const variantsChildren = {
-        hidden: { opacity: 0, height: 0 },
+        hidden: { opacity: shouldReduceMotion ? 1 : 0, height: 0 },
         visible: {
             opacity: 1,
             height: 29,
