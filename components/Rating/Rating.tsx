@@ -61,6 +61,16 @@ export const Rating = forwardRef(
                             tabIndex={computeFocus(rating, i)}
                             onKeyDown={(e: KeyboardEvent) => handleKey(e)}
                             ref={(r) => ratingArrayRef.current?.push(r)}
+                            role={isEditable ? "slider" : ""}
+                            aria-invalid={error ? true : false}
+                            aria-valuenow={rating}
+                            aria-valuemin={1}
+                            aria-valuemax={5}
+                            aria-label={
+                                isEditable
+                                    ? "Укажите рейтинг"
+                                    : "рейтинг" + rating
+                            }
                         >
                             <StarIcon
                                 className={cn(styles.star, {
@@ -95,10 +105,6 @@ export const Rating = forwardRef(
                 return;
             }
 
-            if (!rating) {
-                setRating(0);
-            }
-
             if (e.code === "ArrowRight" || e.code === "ArrowUp") {
                 e.preventDefault();
                 setRating(rating < 5 ? rating + 1 : 5);
@@ -124,7 +130,9 @@ export const Rating = forwardRef(
                     <span key={i}>{r}</span>
                 ))}
                 {error && (
-                    <span className={styles.errorMessage}>{error.message}</span>
+                    <span className={styles.errorMessage} role="alert">
+                        {error.message}
+                    </span>
                 )}
             </div>
         );

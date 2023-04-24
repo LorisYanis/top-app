@@ -21,6 +21,7 @@ export const ReviewForm = ({
         handleSubmit,
         formState: { errors },
         reset,
+        clearErrors,
     } = useForm<IReviewForm>();
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const [isError, setIsError] = useState<string>();
@@ -54,6 +55,7 @@ export const ReviewForm = ({
                     error={errors.name}
                     placeholder="Имя"
                     tabIndex={isOpened ? 0 : -1}
+                    aria-invalid={errors.name ? true : false}
                 />
                 <Input
                     className={styles.inputTitle}
@@ -66,6 +68,7 @@ export const ReviewForm = ({
                     error={errors.title}
                     placeholder="Заголовок отзыва"
                     tabIndex={isOpened ? 0 : -1}
+                    aria-invalid={errors.title ? true : false}
                 />
                 <div className={styles.rating}>
                     <span>Оценка:</span>
@@ -101,9 +104,15 @@ export const ReviewForm = ({
                     error={errors.textarea}
                     placeholder="Текст отзыва"
                     tabIndex={isOpened ? 0 : -1}
+                    aria-label="Текст отзыва"
+                    aria-invalid={errors.textarea ? true : false}
                 />
                 <div className={styles.submit}>
-                    <Button appearance="primary" tabIndex={isOpened ? 0 : -1}>
+                    <Button
+                        appearance="primary"
+                        tabIndex={isOpened ? 0 : -1}
+                        onClick={() => clearErrors()}
+                    >
                         Отправить
                     </Button>
                     <span className={styles.info}>
@@ -113,7 +122,7 @@ export const ReviewForm = ({
                 </div>
             </div>
             {isSuccess && (
-                <div className={styles.success}>
+                <div className={styles.success} role="alert">
                     <div className={styles.successTitle}>
                         Ваш отзыв отправлен
                     </div>
@@ -123,15 +132,29 @@ export const ReviewForm = ({
                     <CloseIcon
                         className={styles.successCloseIcon}
                         onClick={() => setIsSuccess(!isSuccess)}
+                        tabIndex={0}
+                        aria-label="закрыть оповещение"
+                        onKeyDown={(key: KeyboardEvent) => {
+                            if (key.key === "Enter") {
+                                setIsSuccess(!isSuccess);
+                            }
+                        }}
                     />
                 </div>
             )}
             {isError && (
-                <div className={styles.error}>
-                    Что-то пошло не так...
+                <div className={styles.error} role="alert">
+                    <div>Что-то пошло не так...</div>
                     <CloseIcon
                         className={styles.errorCloseIcon}
                         onClick={() => setIsError(undefined)}
+                        tabIndex={0}
+                        aria-label="закрыть оповещение"
+                        onKeyDown={(key: KeyboardEvent) => {
+                            if (key.key === "Enter") {
+                                setIsError(undefined);
+                            }
+                        }}
                     />
                 </div>
             )}
