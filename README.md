@@ -2,7 +2,7 @@
 
 Top app - topics application for every studying topic you just can imagine
 
-# Set up project
+## Set up project
 
 1. Copy repository
 
