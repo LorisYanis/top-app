@@ -39,7 +39,7 @@ export const TopPageComponent = ({
         <div className={styles.wrapper}>
             <Up />
             <div className={styles.title}>
-                <Htag tag="h1">{page.title}</Htag>
+                <Htag tag="h1">{page?.title}</Htag>
                 {products && (
                     <Tag
                         size="big"

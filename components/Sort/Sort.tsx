@@ -4,7 +4,7 @@ import styles from "./Sort.module.css";
 import SortIcon from "./sort.svg";
 
 export const Sort = ({ sort, setSort, className, ...props }: SortProps) => {
-    const onSortHandle = (key: KeyboardEvent, action: SortEnum) => {
+    const onSortHandle = (key, action: SortEnum) => {
         if (key.key === "Enter" && action === SortEnum.Rating) {
             setSort(SortEnum.Rating);
         }
@@ -25,9 +25,7 @@ export const Sort = ({ sort, setSort, className, ...props }: SortProps) => {
                 id="rating"
                 onClick={() => setSort(SortEnum.Rating)}
                 tabIndex={0}
-                onKeyDown={(key: KeyboardEvent) =>
-                    onSortHandle(key, SortEnum.Rating)
-                }
+                onKeyDown={(key) => onSortHandle(key, SortEnum.Rating)}
                 aria-labelledby="sort rating"
                 aria-selected={sort === SortEnum.Rating}
             >
@@ -41,9 +39,7 @@ export const Sort = ({ sort, setSort, className, ...props }: SortProps) => {
                 id="price"
                 onClick={() => setSort(SortEnum.Price)}
                 tabIndex={0}
-                onKeyDown={(key: KeyboardEvent) =>
-                    onSortHandle(key, SortEnum.Price)
-                }
+                onKeyDown={(key) => onSortHandle(key, SortEnum.Price)}
                 aria-labelledby="sort price"
                 aria-selected={sort === SortEnum.Price}
             >

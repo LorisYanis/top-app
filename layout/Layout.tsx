@@ -11,7 +11,7 @@ export const Layout = ({ children }: LayoutProps) => {
     const [isDisplayed, setIsDisplayed] = useState<boolean>(false);
     const bodyRef = useRef<HTMLDivElement>(null);
 
-    const onSkipLinkHandle = (key: KeyboardEvent) => {
+    const onSkipLinkHandle = (key) => {
         if (key.key === "Enter") {
             bodyRef.current?.focus();
             setIsDisplayed(false);
@@ -27,7 +27,7 @@ export const Layout = ({ children }: LayoutProps) => {
                     [styles.displayed]: isDisplayed,
                 })}
                 tabIndex={10}
-                onKeyDown={(key: KeyboardEvent) => onSkipLinkHandle(key)}
+                onKeyDown={(key) => onSkipLinkHandle(key)}
             >
                 Сразу к содержанию
             </a>

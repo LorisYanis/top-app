@@ -19,7 +19,7 @@ export const Search = ({ className, ...props }: SearchProps) => {
         });
     };
 
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e) => {
         if (e.key === "Enter") {
             goToSearch();
         }

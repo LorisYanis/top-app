@@ -26,7 +26,7 @@ export const Product = motion(
                 reviewRef.current.focus();
             };
 
-            const scrollToReviewTab = (key: KeyboardEvent) => {
+            const scrollToReviewTab = (key) => {
                 if (key.key === "Enter") {
                     setIsReviewOpened(true);
                     reviewRef.current?.scrollIntoView({
@@ -118,9 +118,7 @@ export const Product = motion(
                             <a
                                 onClick={scrollToReview}
                                 tabIndex={0}
-                                onKeyDown={(key: KeyboardEvent) =>
-                                    scrollToReviewTab(key)
-                                }
+                                onKeyDown={(key) => scrollToReviewTab(key)}
                             >
                                 <span>{product.reviewCount}</span>
                                 {decOfNumber(product.reviewCount, [

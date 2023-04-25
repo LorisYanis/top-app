@@ -15,6 +15,25 @@ body {
     position: absolute;
 }
 
+.indexWrapper {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    height: 100vh;
+    gap: 20px;
+}
+
+.owlText {
+    display: grid;
+    justify-items: center;
+    align-self: end;
+    gap: 10px;
+}
+
+.coursesButton {
+    align-self: start;
+}
+
 :root {
     --black: #3b434e;
     --gray-dark: #4d504a;

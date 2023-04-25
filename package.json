@@ -4,11 +4,11 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
+        "export": "next export",
         "debug": "NODE_OPTIONS='--inspect' next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint",
-        "stylelint": "stylelint \"**/*.css\" --fix"
+        "lint": "next lint"
     },
     "dependencies": {
         "@svgr/webpack": "^7.0.0",

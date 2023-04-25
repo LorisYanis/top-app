@@ -10,29 +10,19 @@ function Home(): JSX.Element {
     const [rating, setRating] = useState<number>(0);
 
     return (
-        <>
-            <Htag tag="h1">Text h1</Htag>
-            <Htag tag="h2">Text h2</Htag>
-            <Htag tag="h3">Text h3</Htag>
-            <Button appearance="primary" arrow="right">
-                Button
+        <div className="indexWrapper">
+            <div className="owlText">
+                <Htag tag="h1">OWL Top - the topics app</Htag>
+                <P>Search the 7,000+ courses in Coursera Plus</P>
+            </div>
+            <Button
+                className="coursesButton"
+                appearance="primary"
+                arrow="right"
+            >
+                Check Courses
             </Button>
-            <Button appearance="ghost" arrow="down">
-                Button
-            </Button>
-            <P size="big">Big</P>
-            <P size="normal">Normal</P>
-            <P>Normal without props</P>
-            <P size="small">Small</P>
-            <Tag color="ghost">Ghost</Tag>
-            <Tag color="green">Green</Tag>
-            <Tag color="red">Red</Tag>
-            <Tag color="primary">Primary</Tag>
-            <Rating isEditable rating={rating} setRating={setRating} />
-            <Rating rating={rating} />
-            <Input placeholder="test" />
-            <Textarea placeholder="test" />
-        </>
+        </div>
     );
 }
 
