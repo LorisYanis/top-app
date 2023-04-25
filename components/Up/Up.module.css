@@ -5,3 +5,11 @@
     z-index: 1000;
     border-radius: 10px;
 }
+
+.default {
+    cursor: default;
+}
+
+.pointer {
+    cursor: pointer;
+}

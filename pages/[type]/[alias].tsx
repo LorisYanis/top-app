@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { withLayout } from "../../layout/Layout";
 import { MenuItem } from "../../interfaces/menu.interface";
@@ -10,8 +9,8 @@ import { ParsedUrlQuery } from "node:querystring";
 import { ProductModel } from "../../interfaces/product.interface";
 import { firstLevelMenu } from "../../helpers/helpers";
 import { TopPageComponent } from "../../page-components";
-import axios from "axios";
 import { API } from "../../helpers/api";
+import axios from "axios";
 
 function TopPage({ firstCategory, page, products }: TopPageProps): JSX.Element {
     return (
